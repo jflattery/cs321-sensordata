@@ -1,1 +1,13 @@
+void readTemp(){
 
+}
+
+//Create database
+void db_create(){
+
+}
+
+//Create table
+void table_create(){
+
+}
