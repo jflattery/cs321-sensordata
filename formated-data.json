@@ -67,11 +67,48 @@
           "z": "0"
         }
       ]
-    }
-  ]
-}
-{
-  "sensor-data": [
+    },
+    {
+      "timestamp": "{{date(new Date(2020, 0, 1), new Date()).getTime()}},",
+      "latitude": "{{floating(-90.000001, 90)}}",
+      "longitude": "{{floating(-180.000001, 180)}}",
+      "altitude": "{{integer(0, 39500)}}",
+      "roll": "{{floating(-180.000001, 180)}}",
+      "pitch": "{{floating(-90.000001, 90)}}",
+      "yaw": "{{floating(-180.000001, 180)}}",
+      "external": [
+        {
+          "temperature": "{{floating(-40, 80, 1, \"00.0\")}}",
+          "humidity": "{{floating(0, 1, 2)}}"
+        }
+      ],
+      "internal": [
+        {
+          "temperature": "{{floating(-40, 80, 1, \"00.0\")}}"
+        }
+      ],
+      "acceleromter": [
+        {
+          "x": "0",
+          "y": "0",
+          "z": "0"
+        }
+      ],
+      "magnetometer": [
+        {
+          "x": "0",
+          "y": "0",
+          "z": "0"
+        }
+      ],
+      "gyroscope": [
+        {
+          "x": "0",
+          "y": "0",
+          "z": "0"
+        }
+      ]
+    },
     {
       "timestamp": "{{date(new Date(2020, 0, 1), new Date()).getTime()}},",
       "latitude": "{{floating(-90.000001, 90)}}",
