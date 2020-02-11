@@ -1,0 +1,117 @@
+{
+  "sensor-data": [
+    {
+      "timestamp": "{{date(new Date(2020, 0, 1), new Date()).getTime()}},",
+      "latitude": "{{floating(-90.000001, 90)}}",
+      "longitude": "{{floating(-180.000001, 180)}}",
+      "altitude": "{{integer(0, 39500)}}",
+      "roll": "{{floating(-180.000001, 180)}}",
+      "pitch": "{{floating(-90.000001, 90)}}",
+      "yaw": "{{floating(-180.000001, 180)}}",
+      "external": [
+        {
+          "sensor-specs": "\"DHT11 or DHT22\"",
+          "dht11-specs": [
+            {
+              "humidity-range": "\"20-80%\"",
+              "humidity-accuracy": "\"5%\"",
+              "temperature-range": "\"0-50°C\"",
+              "temperature-accuracy": "\"±2°C\""
+            }
+          ],
+          "dht22-specs": [
+            {
+              "humidity-range": "\"0-100%\"",
+              "humidity-accuracy": "\"2-5%\"",
+              "temperature-range": "\"-40 to 80°C\"",
+              "temperature-accuracy": "\"±0.5°C\""
+            }
+          ],
+          "temperature": "{{floating(-40, 80, 1, \"00.0\")}}",
+          "humidity": "{{floating(0, 1, 2)}}"
+        }
+      ],
+      "internal": [
+        {
+          "sensor-specs": "LSM9DS1, DHT11, or DHT22",
+          "temperature": "{{floating(-40, 80, 1, \"00.0\")}}"
+        }
+      ],
+      "acceleromter": [
+        {
+          "sensor-specs": "\"LSM9DS1\"",
+          "def-specs": "\"A 3-tuple of X, Y, Z axis accelerometer values in meters/second squared.\"",
+          "range-specs": "\"±2/±4/±8/±16 g\"",
+          "x": "0",
+          "y": "0",
+          "z": "0"
+        }
+      ],
+      "magnetometer": [
+        {
+          "sensor-specs": "\"LSM9DS1\"",
+          "def-specs": "\"A 3-tuple of X, Y, Z axis magnetometer values in gauss.\"",
+          "range-specs": "\"±4/±8/±12/±16 gauss\"",
+          "x": "0",
+          "y": "0",
+          "z": "0"
+        }
+      ],
+      "gyroscope": [
+        {
+          "sensor-specs": "\"LSM9DS1\"",
+          "def-specs": "\"A 3-tuple of X, Y, Z axis gyroscope values in degrees/second.\"",
+          "range-specs": "\"±245/±500/±2000 dps\"",
+          "x": "0",
+          "y": "0",
+          "z": "0"
+        }
+      ]
+    }
+  ]
+}
+{
+  "sensor-data": [
+    {
+      "timestamp": "{{date(new Date(2020, 0, 1), new Date()).getTime()}},",
+      "latitude": "{{floating(-90.000001, 90)}}",
+      "longitude": "{{floating(-180.000001, 180)}}",
+      "altitude": "{{integer(0, 39500)}}",
+      "roll": "{{floating(-180.000001, 180)}}",
+      "pitch": "{{floating(-90.000001, 90)}}",
+      "yaw": "{{floating(-180.000001, 180)}}",
+      "external": [
+        {
+          "temperature": "{{floating(-40, 80, 1, \"00.0\")}}",
+          "humidity": "{{floating(0, 1, 2)}}"
+        }
+      ],
+      "internal": [
+        {
+          "temperature": "{{floating(-40, 80, 1, \"00.0\")}}"
+        }
+      ],
+      "acceleromter": [
+        {
+          "x": "0",
+          "y": "0",
+          "z": "0"
+        }
+      ],
+      "magnetometer": [
+        {
+          "x": "0",
+          "y": "0",
+          "z": "0"
+        }
+      ],
+      "gyroscope": [
+        {
+          "x": "0",
+          "y": "0",
+          "z": "0"
+        }
+      ]
+    }
+  ]
+}
