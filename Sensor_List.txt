@@ -1,0 +1,1 @@
+Internal Temperature - DHT11 #https://components101.com/dht11-temperature-sensor
