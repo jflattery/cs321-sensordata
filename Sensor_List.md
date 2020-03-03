@@ -1,4 +1,4 @@
-##List of sensors we are considering, or have chosen to use in final product
+##List of sensors we are considering, or have chosen to use in final product##
 
 **Internal Temperature** - DHT11 #https://components101.com/dht11-temperature-sensor
 
