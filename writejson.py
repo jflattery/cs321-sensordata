@@ -92,6 +92,9 @@ for x in range(0,4):
 ## This would convert dictinary into json string
 # string =json.dumps()
 
+## You can also print it to terminal
+# print(json.dumps())
+
 ## This would create json file
 with open('generate.json', 'w') as json_file:
     json.dump(sensor_dict, json_file,  indent = 4)
