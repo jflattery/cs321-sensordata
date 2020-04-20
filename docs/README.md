@@ -107,7 +107,7 @@ git clone git@github.com:jflattery/cs321-sensordata.git
 ```
 Change your currernt directory to the newly created one
 ```bash
-cd ___
+cd cs321-sensordata
 ```
 If not already enabled, enable SPI:
 ```bash
