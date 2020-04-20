@@ -117,4 +117,35 @@ Spin up a new container and LGTM:
 ```bash
 docker run --privileged -it --rm --name conductor -v "$PWD":/usr/src/myapp -w /usr/src/myapp circuit-python:latest python app/conductor.py
 ```
+## Example Output
+```bash
+user@raspberrypi:~/github/docker-pi-setup/docker/sensors $ docker run --privileged -it --rm --name conductor -v "$PWD":/usr/src/myapp -w /usr/src/myapp circuit-python:latest python app/conductor.py
+2020-04-20 18:21:14.334014
+External Temp: 988.792C
+Internal Temp: 20.000C  Humidity: 39%
+Acceleration (m/s^2): (-0.543,0.934,9.614)
+Magnetometer (gauss): (-2.951,-2.951,-2.951)
+Gyroscope (degrees/sec): (30.144,-5.714,-5.145)
+Internal Temp 2: 27.000C
+------------------------------------------------
+2020-04-20 18:21:15.079911
+External Temp: 988.792C
+Internal Temp: 20.000C  Humidity: 39%
+Acceleration (m/s^2): (-0.547,0.943,9.625)
+Magnetometer (gauss): (-3.526,-3.526,-3.526)
+Gyroscope (degrees/sec): (30.126,-5.749,-5.171)
+Internal Temp 2: 27.000C
+------------------------------------------------
+2020-04-20 18:21:16.333645
+External Temp: 988.792C
+Internal Temp: 20.000C  Humidity: 37%
+Acceleration (m/s^2): (-0.562,0.949,9.620)
+Magnetometer (gauss): (-3.310,-3.310,-3.310)
+Gyroscope (degrees/sec): (30.581,-5.731,-5.871)
+Internal Temp 2: 27.000C
+------------------------------------------------
+```
+
 ## Known Issue(s)
+  * 
+  *
