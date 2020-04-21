@@ -1,19 +1,21 @@
 # CS321-007: HAB Sensor Data
 ## Objective: To expose sensor reading data via a realtime JSON formated data stream as well as a historic data file which contains all readings over a period of time.
 ## Sensors Used:
-* Velleman VMA311 (DHT11) [[Microcenter](https://www.microcenter.com/product/613629/velleman-dht11-digital-temperature-humidity-sensor-module-for-arduino)]
+* Velleman VMA311 (DHT11) [[Vendor](https://www.microcenter.com/product/613629/velleman-dht11-digital-temperature-humidity-sensor-module-for-arduino)]
   * 3 or 5V power
   * 2.5mA max current use during conversion (while requesting data)
   * Good for 20-80% humidity readings with 5% accuracy
   * Good for 0-50°C temperature readings ±2°C accuracy
   * No more than 1 Hz sampling rate (once every second)
+  * Weight: ¿?
 * DHT22 [**¿ _VENDOR_ ?**]
   * 3 or 5V power
   * 2.5mA max current use during conversion (while requesting data)
   * Good for 0-100% humidity readings with 2-5% accuracy
   * Good for -40 to 80°C temperature readings ±0.5°C accuracy
   * No more than 0.5 Hz sampling rate (once every 2 seconds)
-* VK-162 G-Mouse GPS [[Amazon](https://www.amazon.com/gp/product/B078Y52FGQ)]
+  * Weight: ¿?
+* VK-162 G-Mouse GPS [[Vendor](https://www.amazon.com/gp/product/B078Y52FGQ)]
   * Data baud rate: 9600 (default) (optional: 4800, 19200, 38400, 57600, 115200, etc.) 
   * Data refresh rate: 1Hz-10Hz refresh rate (can be set to output data 1-10 times per second). 
   * NMEA-0183 protocol output 
@@ -40,49 +42,64 @@
     * Operating temperature: -30 ℃ to +80 ℃
     * Package size:  49 * 38 * 16mm;
     * Cable length 2m
-* Adafruit LSM9DS1 [[Adafruit](https://www.adafruit.com/product/3387)]
+  * Weight: ¿?
+* Adafruit LSM9DS1 [[Vendor](https://www.adafruit.com/product/3387)]
   * Accelerometer ranges: ±2/±4/±8/±16 g (no ±6 g range)
   * Magnetometer ranges: ±4/±8/±12/±16 gauss
   * Gyroscope ranges: ±245/±500/±2000 dps
-* Adafruit MAX31865 [[Adafruit](https://www.adafruit.com/product/3328)]
-  * SPECS
-* Adafruit PT100 [[Adafruit](https://www.adafruit.com/product/3290)]
-  * SPECS
+  * Weight: 2.5g / 0.1oz 
+* Adafruit MAX31865 [[Vendor](https://www.adafruit.com/product/3328)]
+  * Amplifier to be used with PT100
+  * Weight: 2.7g / 0.1oz 
+* Adafruit PT100 [[Vendor](https://www.adafruit.com/product/3290)]
+  * Usable temperature range: -200 to 550°C (-328°F to +1,022°F)
+  * Uses 3-wire interface
+  * ±0.5°C Accuracy from -10°C to +85°C
+  * Weight: 19.3g / 0.7oz 
 
 ## Assembly
 ![Fritzing Diagram](gpio-sensor-diagram.png)
 ### LSM9Ds1 Pinout
-  * Vin - this is the power pin. Chip includes a voltage regulator on board that will take either 3 or 5VDC.
+  * VIN - This is the power pin. Chip includes a voltage regulator on board that will take either 3 or 5VDC.
     * RPi 3V3 to sensor VIN
-  * 3V3 - this is the 3.3V output from the voltage regulator, you can grab up to 100mA from this if you like
-    * Not Used
-  * GND - common ground for power and logic
+  * 3V3 - This is the 3.3V output from the voltage regulator, you can grab up to 100mA from this if you like
+    * _Not Used_
+  * GND - Common ground for power and logic.
     * RPi GND to sensor GND
-  * SCL - this is also the SPI clock pin, it's level shifted so you can use 3-5V logic input
+  * SCL - This is also the SPI clock pin, it's level shifted so you can use 3-5V logic input
     * RPi SCLK to sensor SCL
-  * SDA - this is also the SPI MOSI pin, it's level shifted so you can use 3-5V logic input
+  * SDA - This is also the SPI MOSI pin, it's level shifted so you can use 3-5V logic input
     * Pi MOSI to sensor SDA
-  * CSAG - this is the Accelerometer+Gyro subchip Chip Select, it's level shifted so you can use 3-5V logic input
+  * CSAG - This is the Accelerometer+Gyro subchip Chip Select, it's level shifted so you can use 3-5V logic input
     * RPi GPIO5 to sensor CSAG
-  * CSM - this is the Magnetometer subchip Select, it's level shifted so you can use 3-5V logic input
+  * CSM - This is the Magnetometer subchip Select, it's level shifted so you can use 3-5V logic input
     * RPi GPIO6 to sensor CSM
-  * SDOAG - this is the Accelerometer+Gyro subchip MISO pin - it's 3V logic out, but can be read properly by 5V logic chips.
+  * SDOAG - This is the Accelerometer+Gyro subchip MISO pin - it's 3V logic out, but can be read properly by 5V logic chips.
     * RPi MISO to sensor SDOAG AND sensor SDOM
-  * SDOM - this is the Magnetometer subchip MISO pin - it's 3V logic out, but can be read properly by 5V logic chips.
+  * SDOM - This is the Magnetometer subchip MISO pin - it's 3V logic out, but can be read properly by 5V logic chips.
     * RPi MISO to sensor SDOAG AND sensor SDOM
 
 ### MAX31865 Pinout
-  * Vin - this is the power pin. Chip includes a voltage regulator on board that will take either 3 or 5VDC.
+  * VIN - This is the power pin. Chip includes a voltage regulator on board that will take either 3 or 5VDC.
     * RPi 3V3 to sensor VIN
-  * 3Vo - this is the 3.3V output from the voltage regulator, you can grab up to 100mA from this if you like
-    * Not Used
-  * GND - common ground for power and logic
+  * GND - Common ground for power and logic.
     * RPi GND to sensor GND
-  * SCK - This is the SPI Clock pin, its an input to the chip
-    * 
-  * SDO - this is the Serial Data Out / Master In Slave Out pin, for data sent from the MAX31865 to your processor
-  * SDI - this is the Serial Data In / Master Out Slave In pin, for data sent from your processor to the MAX31865
-  * CS - this is the Chip Select pin, drop it low to start an SPI transaction. Its an input to the chip
+  * 3V3 - This is the 3.3V output from the voltage regulator, you can grab up to 100mA from this if you like
+    * _Not Used_
+  * CLK - This is the SPI Clock pin, its an input to the chip
+    * RPi SCLK to sensor CLK
+  * SDO - This is the Serial Data Out / Master In Slave Out pin, for data sent from the MAX31865 to your processor
+    * RPi MISO to sensor SDO
+  * SDI - This is the Serial Data In / Master Out Slave In pin, for data sent from your processor to the MAX31865
+    * RPi MOSI to sensor SDI
+  * CS - This is the Chip Select pin, drop it low to start an SPI transaction. Its an input to the chip
+    * RPi GPIO16 to sensor CS
+  * RDY - This is a data-ready indicator pin, you can use this pin to speed up your reads if you are writing your own driver. 
+    * _Not Used_
+  * Configuration Jumpers: 
+    * Solder closed the jumper labeled 2/3 Wire and cut the wire connecting the left side of the 2-way jumper right above Rref. Then solder closed the right side labeled 3
+  * Sensor Terminal Blocks:
+    * Solder included terminal blocks to pads, or solder coresponding wires directly to pads. ([https://learn.adafruit.com/adafruit-max31865-rtd-pt100-amplifier?view=all](See))
 
 ## Setup
 Do an update if you have not already done one today:
@@ -119,31 +136,44 @@ docker run --privileged -it --rm --name conductor -v "$PWD":/usr/src/myapp -w /u
 ```
 ## Example Output
 ```bash
-user@raspberrypi:~/github/docker-pi-setup/docker/sensors $ docker run --privileged -it --rm --name conductor -v "$PWD":/usr/src/myapp -w /usr/src/myapp circuit-python:latest python app/conductor.py
-2020-04-20 18:21:14.334014
-External Temp: 988.792C
-Internal Temp: 20.000C  Humidity: 39%
-Acceleration (m/s^2): (-0.543,0.934,9.614)
-Magnetometer (gauss): (-2.951,-2.951,-2.951)
-Gyroscope (degrees/sec): (30.144,-5.714,-5.145)
-Internal Temp 2: 27.000C
+user@raspberrypi:~/github/cs321-sensordata $ docker run --privileged -it --rm --name conductor -v "$PWD":/usr/src/myapp -w /usr/src/myapp circuit-python:latest python app/conductor.py
+
 ------------------------------------------------
-2020-04-20 18:21:15.079911
-External Temp: 988.792C
-Internal Temp: 20.000C  Humidity: 39%
-Acceleration (m/s^2): (-0.547,0.943,9.625)
-Magnetometer (gauss): (-3.526,-3.526,-3.526)
-Gyroscope (degrees/sec): (30.126,-5.749,-5.171)
-Internal Temp 2: 27.000C
+2020-04-21 13:36:56.654825
+External Temp: 21.271C
+Internal Temp: 20.000C  Humidity: 43%
+Acceleration (m/s^2): (-0.921,1.062,9.571)
+Magnetometer (gauss): (2.627,2.627,2.627)
+Gyroscope (degrees/sec): (29.908,-5.880,-7.228)
+Internal Temp 2: 27.062C
+
 ------------------------------------------------
-2020-04-20 18:21:16.333645
-External Temp: 988.792C
-Internal Temp: 20.000C  Humidity: 37%
-Acceleration (m/s^2): (-0.562,0.949,9.620)
-Magnetometer (gauss): (-3.310,-3.310,-3.310)
-Gyroscope (degrees/sec): (30.581,-5.731,-5.871)
-Internal Temp 2: 27.000C
+2020-04-21 13:36:57.399667
+External Temp: 21.305C
+Internal Temp: 20.000C  Humidity: 43%
+Acceleration (m/s^2): (-0.930,1.062,9.581)
+Magnetometer (gauss): (-0.072,-0.072,-0.072)
+Gyroscope (degrees/sec): (30.459,-5.915,-6.711)
+Internal Temp 2: 27.062C
+
 ------------------------------------------------
+2020-04-21 13:36:58.654251
+External Temp: 21.305C
+Internal Temp: 20.000C  Humidity: 40%
+Acceleration (m/s^2): (-0.920,1.074,9.592)
+Magnetometer (gauss): (-0.720,-0.720,-0.720)
+Gyroscope (degrees/sec): (29.803,-5.574,-6.134)
+Internal Temp 2: 27.062C
+
+------------------------------------------------
+2020-04-21 13:36:59.400439
+External Temp: 21.271C
+Internal Temp: 20.000C  Humidity: 40%
+Acceleration (m/s^2): (-0.928,1.067,9.549)
+Magnetometer (gauss): (0.900,0.900,0.900)
+Gyroscope (degrees/sec): (29.619,-5.556,-7.201)
+Internal Temp 2: 27.062C
+
 ```
 
 ## Known Issue(s)

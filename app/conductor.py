@@ -16,7 +16,7 @@ while True:
     gyro_x, gyro_y, gyro_z = lsm9ds1_readings.get('gyroscope')
     internalTemp2 = lsm9ds1_readings.get('temperature')
     myRandom = lsm9ds1_readings.get('myRandom')
-
+    print("\n------------------------------------------------")
     print(datetime.datetime.now())
     print("External Temp: {0:0.3f}C".format(externalReading))
     print("Internal Temp: {:.3f}C  Humidity: {}% ".format(internalTemp1, internalHumidity))
@@ -34,7 +34,6 @@ while True:
         )
     )
     print("Internal Temp 2: {0:0.3f}C".format(internalTemp2))
-    print("------------------------------------------------")
 
     elapsed = time.time() - start_time
     time.sleep(1.0 - elapsed)
