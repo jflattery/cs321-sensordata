@@ -1,6 +1,6 @@
 # CS321-007: HAB Sensor Data
 ### Objective: To expose sensor reading data via a realtime JSON formated data stream as well as a historic data file which contains all readings over a period of time.
-[[Refrence Materials](references.md)] [./Project Slides](./AeroHAB6-Overview.pdf)
+[[Refrence Materials](references.md)] [[Project Slides](./AeroHAB6-Overview.pdf)]
 
 ## Sensors Used:
 * Velleman VMA311 (DHT11) [[Vendor](https://www.microcenter.com/product/613629/velleman-dht11-digital-temperature-humidity-sensor-module-for-arduino)]
