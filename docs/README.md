@@ -134,11 +134,14 @@ raspi-config nonint do_spi 0
 ```
 Spin up a new container and LGTM:
 ```bash
-docker run --privileged -it --rm --name conductor -v "$PWD":/usr/src/myapp -w /usr/src/myapp circuit-python:latest python app/conductor.py
+docker run --privileged -it --rm --name conductor \
+    -v "$PWD":/usr/src/myapp -w /usr/src/myapp \
+    jflattery/circuit-python:latest \
+    python app/conductor.py
 ```
 ## Example Output
 ```bash
-user@raspberrypi:~/github/cs321-sensordata $ docker run --privileged -it --rm --name conductor -v "$PWD":/usr/src/myapp -w /usr/src/myapp circuit-python:latest python app/conductor.py
+user@raspberrypi:~/github/cs321-sensordata $ docker run --privileged -it --rm --name conductor -v "$PWD":/usr/src/myapp -w /usr/src/myapp jflattery/circuit-python:latest python app/conductor.py
 
 ------------------------------------------------
 2020-04-21 13:36:56.654825
