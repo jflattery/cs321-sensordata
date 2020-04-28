@@ -114,7 +114,7 @@ curl -sSL https://get.docker.com | sh
 ```
 Add your self to the docker group so you don't have to type sudo every time to use it:
 ```bash
-boldsudo usermod -aG docker $USER
+sudo usermod -aG docker $USER
 ```
 If not already installed install git:
 ```bash
