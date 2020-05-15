@@ -27,4 +27,5 @@ while True:
     start = time.time()
     
     # Sleep for at least 1 second to gaurantee, DHT11 has at least 1 second before being read again
-    time.sleep(1)
+    elapsed = time.time()
+    time.sleep(1.0 - elapsed)
