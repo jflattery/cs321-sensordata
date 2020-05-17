@@ -1,9 +1,10 @@
 import json     # Libary provides methods to convert dict to and from json
 import atexit   # Allows a function to be called upon exit. Used to write json file
 
-# Function that takes sensor readings as arguments, and appends them to python dict
+# Function that takes sensor readings and appends them to python dict
 # assumes dictionary has already been initialized prior to call
 #   i.e. this line -> sensor_dict = { "sensor_data": [] }
+# also assumes varibales have been previously defined (latitude, longitude, etc.)
 def add_json():
     # Append data to the array
     sensor_dict["sensor_data"].append({
