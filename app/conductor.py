@@ -1,39 +1,93 @@
 import time
 import datetime
-import dht11
+import dht
 import max31865
 import lsm9ds1
 
 while True:
     start_time = time.time()
-    externalReading = max31865.get()
+    try:
+      externalReading = max31865.get()
+    except Exception: 
+      pass
+    
+    try:
+      internalTemp1, internalHumidity = dht.get(11)
+    except Exception:
+      pass
+    
+    try:
+      lsm9ds1_readings = lsm9ds1.get()
+    except Exception:
+      pass
 
-    internalTemp1, internalHumidity = dht11.get()
+    try:
+      accel_x, accel_y, accel_z = lsm9ds1_readings.get('acceleration')
+    except Exception:
+      pass
 
-    lsm9ds1_readings = lsm9ds1.get()
-    accel_x, accel_y, accel_z = lsm9ds1_readings.get('acceleration')
-    mag_x, mag_y, mag_z = lsm9ds1_readings.get('magnetometer')
-    gyro_x, gyro_y, gyro_z = lsm9ds1_readings.get('gyroscope')
-    internalTemp2 = lsm9ds1_readings.get('temperature')
-    myRandom = lsm9ds1_readings.get('myRandom')
+    try:
+      mag_x, mag_y, mag_z = lsm9ds1_readings.get('magnetometer')
+    except Exception:
+      pass
+
+    try:
+      gyro_x, gyro_y, gyro_z = lsm9ds1_readings.get('gyroscope')
+    except Exception:
+      pass
+
+    try:
+      internalTemp2 = lsm9ds1_readings.get('temperature')
+    except Exception:
+      pass
+    
+    try:
+      myRandom = lsm9ds1_readings.get('myRandom')
+    except Exception:
+      pass
+    
     print("\n------------------------------------------------")
     print(datetime.datetime.now())
-    print("External Temp: {0:0.3f}C".format(externalReading))
-    print("Internal Temp: {:.3f}C  Humidity: {}% ".format(internalTemp1, internalHumidity))
-    print(
+    
+    try:
+      print("External Temp: {0:0.3f}C".format(externalReading))
+    except Exception:
+      pass
+    
+    try:
+      print("Internal Temp: {:.3f}C  Humidity: {}% ".format(internalTemp1, internalHumidity))
+    except Exception:
+      pass
+    
+    try:
+      print(
         "Acceleration (m/s^2): ({0:0.3f},{1:0.3f},{2:0.3f})".format(
             accel_x, accel_y, accel_z
         )
-    )
-    print(
+      )
+    except Exception:
+      pass
+
+    try:
+      print(
         "Magnetometer (gauss): ({0:0.3f},{1:0.3f},{2:0.3f})".format(mag_x, mag_y, mag_z)
-    )
-    print(
+      )
+    except Exception:
+      pass
+      
+    try:
+      print(
         "Gyroscope (degrees/sec): ({0:0.3f},{1:0.3f},{2:0.3f})".format(
             gyro_x, gyro_y, gyro_z
         )
-    )
-    print("Internal Temp 2: {0:0.3f}C".format(internalTemp2))
+      )
+    except Exception:
+      pass
+
+    try:
+      print("Internal Temp 2: {0:0.3f}C".format(internalTemp2))
+    except Exception:
+      pass
 
     elapsed = time.time() - start_time
     time.sleep(1.0 - elapsed)
