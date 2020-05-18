@@ -1,5 +1,4 @@
 # Sprint 7 Reflections
-  * 
 
 ### What went well?
   *
@@ -17,5 +16,7 @@
   *
 
 ### List of user stories completed this sprint.
-  *
+  * Built and pushed a Docker container image RethinkDB 2.4.0 for ARM32v7
+  * Purchased a VK-162 G-Mouse GPS to support development and testing.
+  * 
 
