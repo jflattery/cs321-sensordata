@@ -72,11 +72,11 @@ def add_json():
         },
         "gps": {
             "sensor-specs": "\"VK162\"",
-            "def-specs": "\A 2-tuple of Latitude, Longitude in degrees"\"",
+            "def-specs": "\A 3-tuple of Latitude, Longitude, Altitude"\"",
             "range-specs": "\"±5 m\"",
             "latitude": latitude,
-            "longitude": longitude#,
-            #"altitude": altitude,   <-omitted
+            "longitude": longitude,
+            "altitude": altitude,  
         },
         "barometer": {
             "sensor-specs": "\"Pi Sense Hat\"",
