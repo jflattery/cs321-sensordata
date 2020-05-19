@@ -4,19 +4,13 @@ import atexit   # Allows a function to be called upon exit. Used to write json f
 # Function that takes sensor readings and appends them to python dict
 # assumes dictionary has already been initialized prior to call
 #   i.e. this line -> sensor_dict = { "sensor_data": [] }
-# also assumes varibales have been previously defined (latitude, longitude, etc.)
+# also assumes varibales have been previously defined (latitude, longitude, roll/yaw/pitch etc.)
 def add_json():
     # Append data to the array
     sensor_dict["sensor_data"].append({
         "timestamp": datetime.datetime.now().__str__(),
-        "latitude": latitude,
-        "longitude": longitude,
-        "altitude": altitude,
-        "roll": roll,
-        "pitch": pitch,
-        "yaw": yaw,
         "external": {
-            "sensor-specs": "\"DHT11 or DHT22\"",
+            "sensor-specs": "\"DHT11 or DHT22 or MAX31865 w/ PT100\"",
             "dht11-specs":
                 {
                 "humidity-range": "\"20-80%\"",
@@ -31,6 +25,11 @@ def add_json():
                 "temperature-range": "\"-40 to 80°C\"",
                 "temperature-accuracy": "\"±0.5°C\""
                 },
+            "MAX31865 w/ PT100":
+                {
+                "temperature-range": "\"-200 to 550°C\"",
+                "temperature-accuracy": "\"±0.5°C\""
+                }
             "temperature": externalReading
         },
         "internal": {
@@ -62,7 +61,30 @@ def add_json():
             "x": gyro_x,
             "y": gyro_y,
             "z": gyro_z
+        },
+        "orientation": {
+            "sensor-specs": "\"Pi Sense HAT\"",
+            "def-specs": "\"A 3-tuple of Roll, Pitch, Yaw via an accelerometer, 3D gyroscope, and magnetometer.\"",
+            "range-specs": "\"Uncertainity determined by propogation of error (accel,gyro,magnetometer)\"",
+            "roll": roll,
+            "yaw": yaw,
+            "pitch": pitch
+        },
+        "gps": {
+            "sensor-specs": "\"VK162\"",
+            "def-specs": "\A 2-tuple of Latitude, Longitude in degrees"\"",
+            "range-specs": "\"±5 m\"",
+            "latitude": latitude,
+            "longitude": longitude#,
+            #"altitude": altitude,   <-omitted
+        },
+        "barometer": {
+            "sensor-specs": "\"Pi Sense Hat\"",
+            "def-specs": "\Air pressure in hPa"\"",
+            "range-specs": "\"±1 hPa\"",
+            "pressure": pressure,
         }
+        
     })
 
 
