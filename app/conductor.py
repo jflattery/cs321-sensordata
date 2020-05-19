@@ -3,6 +3,7 @@ import datetime
 import dht
 import max31865
 import lsm9ds1
+import gvk162
 
 while True:
     start_time = time.time()
@@ -46,6 +47,11 @@ while True:
     except Exception:
       pass
     
+    try:
+      gps = gvk162.get()
+    except Exception:
+      pass
+
     print("\n------------------------------------------------")
     print(datetime.datetime.now())
     
@@ -86,6 +92,14 @@ while True:
 
     try:
       print("Internal Temp 2: {0:0.3f}C".format(internalTemp2))
+    except Exception:
+      pass
+
+    try:
+      print("GPS Latitude: %s" % gps['latitude'])
+      print("GPS Longitude: %s" % gps['longitude'])
+      print("GPS Altitude: %s" % gps['altitude'])
+      print("GPS Time: %s" % gps['gpsTime'])
     except Exception:
       pass
 
